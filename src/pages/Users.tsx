@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { getUsuarios, deleteUsuario } from "../../api";
+import { getUsuarios, deleteUsuario, updateUsuario, type Usuario } from "../../api";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Swal from 'sweetalert2'
 
 function Users() {
   const [usuarios, setUsuarios] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
+  const [editingId, setEditingId] = useState<string | number | null>(null)
+  const [editedUser, setEditedUser] = useState<Usuario | null>(null)
 
   const fetchUsuarios = async () => {
     try {
@@ -46,6 +48,10 @@ function Users() {
       }
     }
   }
+
+const handleEdit = (usuario: Usuario) => {
+  setEditingId (usuario.id|| null)
+  setEditingId({...usuario})
 
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-blue-900">
