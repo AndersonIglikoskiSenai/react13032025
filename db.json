@@ -1,18 +1,3 @@
 {
-    "usuarios":[
-        {
-            "id" : "1",
-            "nome" : "João",
-            "sobrenome" : "Silva",
-            "email " : "js@js.com",
-            "cpf" : "123456789101"
-        },
-        {
-            "id" : "2",
-            "nome" : "Maria",
-            "sobrenome" : "Silva",
-            "email " : "ms@ms.com",
-            "cpf" : "123456789101"
-        }
-    ]
+  "usuarios": []
 }

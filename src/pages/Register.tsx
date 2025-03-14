@@ -1,16 +1,34 @@
+"use client"
+
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { addUsuario } from "../../api";
 
 function Register() {
     const [nome, setNome] = useState("");
     const [sobrenome, setSobrenome] = useState("");
     const [email, setEmail] = useState("");
     const [cpf, setCpf] = useState("");
+    const[isSubmitting, setIsSubmitting] = useState(false)
+
+
 
     const navigate = useNavigate();
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit =async (e: React.FormEvent) => {
         e.preventDefault();
+        setIsSubmitting(true)
+        try {
+            const usuario = {
+                nome, sobrenome, email, cpf
+            }
+
+            await addUsuario(usuario)
+        } catch (error) {
+            console.log("Erro ao adicionar o usuario", error)
+            setIsSubmitting(false)
+        }
+
         navigate(`/perfil/${nome}`, {
             state: { nome, sobrenome, email, cpf }
         });
@@ -54,8 +72,10 @@ function Register() {
                     value={cpf}
                     onChange={(e) => setCpf(e.target.value)}
                 />
-                <button className="ml-2 p-1 bg-blue-900 text-white rounded mt-4" type="submit">
-                    Cadastrar
+                <button className="ml-2 p-1 bg-blue-900 text-white rounded mt-4" type="submit"
+                disabled={isSubmitting}
+                >
+                    {isSubmitting? "Cadastrando..." : "Cadastrar"}
                 </button>
             </form>
             <Link
