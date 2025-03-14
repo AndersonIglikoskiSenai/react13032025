@@ -51,7 +51,7 @@ function Users() {
 
 const handleEdit = (usuario: Usuario) => {
   setEditingId (usuario.id|| null)
-  setEditingId({...usuario})
+  setEditedUser({...usuario})
 
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-blue-900">
