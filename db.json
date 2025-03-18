@@ -1,3 +1,18 @@
 {
-  "usuarios": []
+  "usuarios": [
+    {
+      "id": "475f",
+      "nome": "Tesilton",
+      "sobrenome": "Testario",
+      "email": "teste@testando.com.br",
+      "cpf": "00225465744"
+    },
+    {
+      "id": "290b",
+      "nome": "Cristiano",
+      "sobrenome": "Ronaldo",
+      "email": "cr7@gmail.com",
+      "cpf": "05456829433"
+    }
+  ]
 }
